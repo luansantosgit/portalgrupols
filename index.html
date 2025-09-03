@@ -27,7 +27,7 @@
             <a href="#" class="flex items-center text-blue-600">
     <img src="logo.png" alt="Logo Grupo LS Tecnologia" class="h-10 mr-2">
     <span class="text-2xl font-bold">Grupo LS Tecnologia</span>
-             </a>
+              </a>
             <div class="hidden md:flex space-x-6">
                 <a href="#solucoes" class="text-gray-600 hover:text-blue-600 transition duration-300">Soluções</a>
                 <a href="#servicos" class="text-gray-600 hover:text-blue-600 transition duration-300">Serviços</a>
@@ -53,13 +53,17 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section class="bg-hero py-20 md:py-32">
-            <div class="container mx-auto px-4 text-center">
-                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-gray-900 mb-4">
-                    Grupo LS Tecnologia: <span class="text-blue-600">CRM e IA</span> para levar sua empresa ao próximo nível.
+        <section class="relative py-20 md:py-32 overflow-hidden">
+            <video autoplay loop muted class="absolute top-0 left-0 w-full h-full object-cover z-0">
+                <source src="https://db.talkincrm.com.br/storage/v1/object/public/banco.arquivos/SITE%20ARQUIVOS/video%20site%20v2.f4v" type="video/mp4">
+                Seu navegador não suporta a tag de vídeo.
+            </video>
+            <div class="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-10"></div>
+            <div class="container mx-auto px-4 text-center relative z-20">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-white mb-4">
+                    Grupo LS Tecnologia: <span class="text-blue-400">CRM e IA</span> para levar sua empresa ao próximo nível.
                 </h1>
-                <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
                     Não é só tecnologia, é o futuro do seu relacionamento com o cliente.
                 </p>
                 <a href="https://wa.me/5518997411233?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20CRM%20%2B%20IA." class="bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105">
@@ -68,7 +72,6 @@
             </div>
         </section>
 
-        <!-- Problem & Solution Section -->
         <section id="solucoes" class="py-20">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Sua empresa já enfrentou isso?</h2>
@@ -117,7 +120,6 @@
             </div>
         </section>
 
-        <!-- Services Section -->
         <section id="servicos" class="bg-gray-100 py-20">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nossas soluções de CRM + IA</h2>
@@ -155,7 +157,6 @@
             </div>
         </section>
 
-        <!-- Testimonials Section -->
         <section id="depoimentos" class="py-20">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12">Quem já confia na gente</h2>
@@ -172,7 +173,6 @@
             </div>
         </section>
 
-        <!-- CTA Section -->
         <section class="bg-blue-600 py-20 text-center text-white">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Pronto para transformar o futuro da sua empresa?</h2>
@@ -185,8 +185,14 @@
             </div>
         </section>
     </main>
-
-    <!-- WhatsApp Bubble -->
+    
+    <footer class="bg-gray-800 text-white py-8 text-center">
+        <div class="container mx-auto px-4">
+            <p class="text-lg font-bold mb-2">GRUPO LS TECNOLOGIA</p>
+            <p class="text-sm">CNPJ 42.654.880/0001-60</p>
+            <p class="text-sm">PRESIDENTE PRUDENTE - SP</p>
+        </div>
+    </footer>
     <a href="https://wa.me/5518997411233?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20os%20servi%C3%A7os%20do%20Grupo%20LS%20Tecnologia." class="whatsapp-bubble fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 transform hover:scale-110">
         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M1.849 22.146l2.128-7.79a9.006 9.006 0 0113.882-1.921l-1.921 1.921a7.006 7.006 0 00-11.233-5.266l-1.921 1.921a9.006 9.006 0 01-1.921 13.882zM12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm3.5 12.5h-7v-1h7v1zm0-3h-7v-1h7v1zm0-3h-7v-1h7v1z"></path>
