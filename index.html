@@ -10,9 +10,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
+        /* OTIMIZAÇÃO DE RESPONSIVIDADE: Impede qualquer conteúdo de vazar horizontalmente */
         body {
             font-family: 'Inter', sans-serif;
             @apply bg-gray-50 text-gray-800;
+            overflow-x: hidden; /* Garantia de que não haverá scroll horizontal */
         }
         /* Estilos adicionais do site original */
         .bg-hero {
@@ -83,6 +85,33 @@
             padding: 20px;
             text-align: center;
         }
+
+        /* Estilo para Acordeão do FAQ */
+        .faq-item summary {
+            cursor: pointer;
+            padding: 16px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            line-height: 0;
+            transition: transform 0.3s;
+        }
+        .faq-item[open] summary::after {
+            content: '-';
+            transform: rotate(0deg);
+        }
+        .faq-item[open] summary {
+            color: #2563eb; /* blue-600 */
+        }
+        .faq-content {
+            padding-bottom: 16px;
+            color: #4b5563; /* gray-600 */
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -96,7 +125,7 @@
                 <a href="#solucoes" class="text-gray-600 hover:text-blue-600 transition duration-300">Soluções</a>
                 <a href="#servicos" class="text-gray-600 hover:text-blue-600 transition duration-300">Serviços</a>
                 <a href="#canais" class="text-gray-600 hover:text-blue-600 transition duration-300">Canais</a>
-                <a href="#depoimentos" class="text-gray-600 hover:text-blue-600 transition duration-300">Depoimentos</a>
+                <a href="#faq" class="text-gray-600 hover:text-blue-600 transition duration-300">FAQ</a> <a href="#depoimentos" class="text-gray-600 hover:text-blue-600 transition duration-300">Depoimentos</a>
             </div>
             <a href="https://wa.me/5518997411233?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20CRM%20%2B%20IA." class="hidden md:block bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition duration-300">
                 Falar com um consultor
@@ -111,7 +140,7 @@
             <a href="#solucoes" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Soluções</a>
             <a href="#servicos" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Serviços</a>
             <a href="#canais" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Canais</a>
-            <a href="#depoimentos" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Depoimentos</a>
+            <a href="#faq" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">FAQ</a> <a href="#depoimentos" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Depoimentos</a>
             <a href="https://wa.me/5518997411233?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20CRM%20%2B%20IA."
 class="block py-3 px-6 text-blue-600 font-medium hover:bg-gray-100">
                 Falar com um consultor
@@ -352,18 +381,146 @@ class="text-gray-600">Automatize tarefas, organize leads e tenha uma visão 360�
             </div>
         </section>
 
+        <section id="faq" class="py-20 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Perguntas Frequentes (FAQ)</h2>
+                
+                <div class="max-w-4xl mx-auto space-y-4">
+                    
+                    <h3 class="text-2xl font-semibold text-blue-600 pt-4 border-t border-gray-300">Recursos do CRM</h3>
 
-        <section id="depoimentos" class="py-20 bg-gray-50">
+                    <details class="bg-white p-4 rounded-lg shadow faq-item">
+                        <summary class="text-lg text-gray-800">Quais são os principais recursos de organização e filtragem do CRM? 🏷️</summary>
+                        <div class="faq-content">
+                            O CRM oferece diversas ferramentas de organização visual e de dados:
+                            <ul>
+                                <li>👉 Utilize <strong>Tags</strong> para filtro e identificação rápida de clientes/negócios.</li>
+                                <li>👉 Os painéis <strong>Kanban de Tags</strong> e <strong>Kanban de Negociações</strong> (com valores de produtos/serviços) garantem uma <strong>organização visual</strong> eficiente do seu funil.</li>
+                                <li>👉 Use <strong>Filtros Avançados</strong> por período, operadores, canais e tags para análises detalhadas.</li>
+                            </ul>
+                        </div>
+                    </details>
+                    
+                    <details class="bg-white p-4 rounded-lg shadow faq-item">
+                        <summary class="text-lg text-gray-800">Gestão de Usuários e Custos Adicionais. 👤</summary>
+                        <div class="faq-content">
+                            <p>É possível criar <strong>Departamentos</strong> e <strong>Usuários</strong>. O número de usuários inicial está incluso no seu plano contratado.</p>
+                            <p class="mt-2 text-sm">A criação de novos usuários adicionais é <strong>conforme contratação</strong>. O valor é de <strong>R$ 29,90 por usuário adicional</strong> contratado fora do plano inicial.</p>
+                        </div>
+                    </details>
+
+
+                    <details class="bg-white p-4 rounded-lg shadow faq-item">
+                        <summary class="text-lg text-gray-800">Como funciona o rastreio de Leads e o disparo de Campanhas? 📈</summary>
+                        <div class="faq-content">
+                            O sistema faz o <strong>Rastreio de Origens de Leads</strong> (Meta, Google, etc.) e calcula a <strong>% de Conversão</strong>. O fornecimento de métricas de vendas no painel está em desenvolvimento (em breve).
+                            <p class="pt-2">Para comunicação, é possível disparar <strong>Campanhas</strong> tanto pela <strong>API Oficial</strong> quanto pela <strong>API Não Oficial</strong> do WhatsApp.</p>
+                        </div>
+                    </details>
+                    
+                    <details class="bg-white p-4 rounded-lg shadow faq-item">
+                        <summary class="text-lg text-gray-800">Quais canais de comunicação e telefonia são suportados? 📱</summary>
+                        <div class="faq-content">
+                            Os canais disponíveis são: <strong>WhatsApp</strong> (API Oficial e Não Oficial), <strong>Instagram</strong>, <strong>Messenger</strong>, <strong>Mercado Livre</strong>, <strong>Webchat</strong> e outros (sob consulta).
+                            <p class="pt-2">Para chamadas, oferecemos a integração com <strong>API VOIP</strong> (Contratação à parte).</p>
+                        </div>
+                    </details>
+                    
+                    <details class="bg-white p-4 rounded-lg shadow faq-item">
+                        <summary class="text-lg text-gray-800">Como posso automatizar fluxos de mensagens com o CRM? 🤖</summary>
+                        <div class="faq-content">
+                            Você pode usar:
+                            <ul>
+                                <li>👉 <strong>Respostas Rápidas</strong> com mensagens estáticas ou com fluxo de conversa.</li>
+                                <li>👉 <strong>Webhook | Trigger</strong>: Dispare um fluxo de conversa pré-criado (ex: mensagem de agradecimento, instruções de acesso) diretamente da sua aplicação para o CRM.</li>
+                                <li>👉 <strong>Menu de Ação no Chat</strong>: Acione a conversão do cliente (e gere métricas de vendas no painel - em breve).</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <h3 class="text-2xl font-semibold text-blue-600 pt-8 border-t border-gray-300">Recursos do Agente de IA</h3>
+                    
+                    <details class="bg-white p-4 rounded-lg shadow faq-item">
+                        <summary class="text-lg text-gray-800">Quais recursos o Agente de IA oferece? (Basic vs. Plus) ✨</summary>
+                        <div class="faq-content">
+                            O IA Plus inclui funcionalidades avançadas como:
+                            <ul>
+                                <li>🗣️ <strong>Interpretação de Áudio</strong> e <strong>Transcrição de Áudio</strong> (no chat, requer token OpenAI).</li>
+                                <li>🖼️ <strong>Visualização de Imagem</strong> e capacidade de <strong>Enviar Mídias</strong>.</li>
+                                <li>🔊 <strong>Resposta com Áudio Humanizado</strong> (utilizando ElevenLabs, com 10.000 créditos gratuitos por mês).</li>
+                            </ul>
+                        </div>
+                    </details>
+                    
+                    <details class="bg-white p-4 rounded-lg shadow faq-item">
+                        <summary class="text-lg text-gray-800">Como o Agente de IA lida com clientes que param de responder? ⏳</summary>
+                        <div class="faq-content">
+                            O recurso de <strong>Follow-up na Conversa com o Atendente</strong> é crucial: o Agente de IA monitora a conversa e, se o cliente não responder após um <strong>tempo (X) configurado pelo gestor</strong>, o Agente de IA automaticamente entra na conversa com uma abordagem de continuação. Isso <strong>evita que seus atendentes se esqueçam</strong> ou percam a oportunidade de resgatar o contato.
+                        </div>
+                    </details>
+
+                    <details class="bg-white p-4 rounded-lg shadow faq-item">
+                        <summary class="text-lg text-gray-800">Como o Agente de IA é treinado para responder sobre meu negócio? 🧠</summary>
+                        <div class="faq-content">
+                            O agente é treinado através de uma <strong>Base de Conhecimento</strong> alimentada com seus arquivos. Além disso, você pode cadastrar uma <strong>Tabela de Produtos</strong> para que o agente acesse o banco de dados e responda com precisão sobre valores, informações e especificações de produtos/serviços ao cliente.
+                        </div>
+                    </details>
+                    
+                    <h3 class="text-2xl font-semibold text-blue-600 pt-8 border-t border-gray-300">Geral e Suporte</h3>
+
+                    <details class="bg-white p-4 rounded-lg shadow faq-item">
+                        <summary class="text-lg text-gray-800">Posso baixar o histórico das conversas? 📥</summary>
+                        <div class="faq-content">
+                            Sim, é possível <strong>Baixar o Histórico da Conversa em PDF</strong> para comprovações e arquivamento se necessário.
+                        </div>
+                    </details>
+                    
+                    <details class="bg-white p-4 rounded-lg shadow faq-item">
+                        <summary class="text-lg text-gray-800">Como funcionam as integrações externas e a gestão de contatos? 🔗</summary>
+                        <div class="faq-content">
+                            <p><strong>Integrações com outros sistemas</strong> são um serviço contratado à parte, com valores definidos pela complexidade da demanda.</p>
+                            <p class="pt-2">O CRM possui recursos nativos para <strong>Importar Contatos</strong> e <strong>Sincronizar Contatos com a Agenda do Celular</strong>.</p>
+                        </div>
+                    </details>
+                    
+                    <details class="bg-white p-4 rounded-lg shadow faq-item">
+                        <summary class="text-lg text-gray-800">Nosso CRM está em conformidade com a LGPD? 🔒</summary>
+                        <div class="faq-content">
+                            Sim, o Grupo LS Tecnologia e o TalkinCRM estão totalmente adequados à Lei Geral de Proteção de Dados. Você pode consultar o documento de conformidade completo em nosso site para mais detalhes sobre a segurança e o tratamento dos seus dados e dos seus clientes.
+                            <p class="pt-2"><strong><a href="#" onclick="openLgpdModal(event)" class="font-bold text-blue-600 hover:text-blue-800 underline transition duration-300">Ver Documento de Conformidade LGPD</a></strong></p>
+                        </div>
+                    </details>
+
+                </div>
+                
+                <div class="max-w-4xl mx-auto mt-8 p-4 bg-blue-50 border-l-4 border-blue-400 text-blue-800">
+                    <p class="font-semibold text-lg flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Ainda tem dúvidas?
+                    </p>
+                    <p class="mt-2">
+                        Caso as dúvidas acima não tenham sido suficientes, entre em contato pelo WhatsApp de suporte: 
+                        <a href="https://wa.me/5518997411233?text=Ol%C3%A1!%20Tenho%20d%C3%BAvidas%20sobre%20o%20CRM%20do%20Grupo%20LS%20Tecnologia."
+class="font-bold text-blue-600 hover:text-blue-800 underline transition duration-300">
+                            18 99741-1233
+                        </a>
+                    </p>
+                </div>
+                
+            </div>
+        </section>
+        
+        <section id="depoimentos" class="py-20 bg-white">
             <div class="container mx-auto 
 px-4 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12">Quem já confia na gente</h2>
                 <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
                         <p class="italic text-gray-600 mb-4">"Fui atendido pelo Luan, 
 rápido, eficaz e muito competente, ajudou demais na configuração do nosso primeiro Bot, mantendo-se atencioso mesmo após o pagamento final do serviço"</p>
                         <p class="font-semibold text-gray-800">- Juliano, MKZ, Holz Máquinas</p>
                     </div>
-                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
                         <p class="italic text-gray-600 mb-4">"Equipe profissional com um serviço diferenciado, recomendo."</p>
                         <p class="font-semibold text-gray-800">- Marcio Ruiz</p>
                     </div>
@@ -425,6 +582,12 @@ class="bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-
                     </svg>
                     Ver no Google
                 </a>
+                <a href="#" onclick="openLgpdModal(event)" rel="noopener noreferrer" class="text-white hover:text-blue-400 transition duration-300 flex items-center" title="Documento de Conformidade com a Lei Geral de Proteção de Dados">
+                    <svg class="w-6 h-6 mr-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v2h-2V7zm0 4h2v6h-2v-6z"/>
+                    </svg>
+                    Conformidade LGPD
+                </a>
             </div>
             
             <p class="text-lg font-bold mb-2">GRUPO LS TECNOLOGIA</p>
@@ -440,7 +603,60 @@ class="whatsapp-bubble fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 r
         </svg>
     </a>
 
+    <div id="lgpd-modal" class="fixed inset-0 bg-black bg-opacity-75 z-[9999] hidden flex items-center justify-center p-4 transition-opacity duration-300">
+        <div class="bg-white rounded-lg shadow-2xl w-full max-w-4xl h-full max-h-[90vh] flex flex-col overflow-hidden">
+            <div class="flex justify-between items-center p-4 border-b border-gray-200">
+                <h3 class="text-xl font-bold text-gray-900">Documento de Conformidade LGPD</h3>
+                <button id="close-modal-btn" class="text-gray-500 hover:text-gray-900 transition duration-150">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <iframe id="lgpd-iframe" src="" class="w-full flex-grow border-0" frameborder="0"></iframe>
+        </div>
+    </div>
     <script>
+        // --- VARIÁVEL GLOBAL PARA O PDF ---
+        const LGPD_PDF_URL = "https://db.talkincrm.com.br/storage/v1/object/public/banco.arquivos/SITE%20ARQUIVOS/DOC%20LGPD/TalkinCRM_LGPD.pdf";
+
+        // --- FUNÇÃO CENTRAL DE SCROLL COM AJUSTE DE CABEÇALHO (NOVA) ---
+        function scrollToSection(selector) {
+            const element = document.querySelector(selector);
+            const header = document.querySelector('header');
+            
+            if (element && header) {
+                const headerHeight = header.offsetHeight;
+                // 'offsetTop' dá a posição do topo do elemento em relação ao documento
+                const elementPosition = element.offsetTop;
+                
+                // Rola para a posição, subtraindo a altura do cabeçalho e adicionando um pequeno padding (20px)
+                window.scrollTo({
+                    top: elementPosition - headerHeight - 20, 
+                    behavior: 'smooth'
+                });
+            } else if (element) {
+                // Fallback para rolagem padrão se não puder calcular o offset do cabeçalho
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        // --- FUNÇÕES DE CONTROLE DO MODAL LGPD (MANTIDAS) ---
+        function openLgpdModal(e) {
+            if(e) e.preventDefault();
+            const modal = document.getElementById('lgpd-modal');
+            const iframe = document.getElementById('lgpd-iframe');
+
+            iframe.src = LGPD_PDF_URL;
+            modal.classList.remove('hidden');
+        }
+
+        function closeLgpdModal() {
+            const modal = document.getElementById('lgpd-modal');
+            const iframe = document.getElementById('lgpd-iframe');
+            
+            modal.classList.add('hidden');
+            iframe.src = '';
+        }
+        
         // --- LÓGICA DE CHATBOT (MANTIDA) ---
         const API_URL = 'https://conecta.talkincrm.com.br/webhook/agente-site';
         const chatMessages = document.getElementById('chat-messages');
@@ -539,41 +755,118 @@ class="whatsapp-bubble fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 r
             }
         }
 
-        // 5. Listener para o formulário de chat
-        chatForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const message = chatInput.value.trim();
-            
-            if (message) {
-                sendMessage(message);
-                chatInput.value = ''; // Limpa o input
-            }
-        });
+        // --- LISTENERS PRINCIPAIS ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            const lgpdModal = document.getElementById('lgpd-modal');
 
-        // 6. Listener para esconder a mensagem inicial ao focar (MANTIDO)
-        chatInput.addEventListener('focus', function() {
-            if (initialMessageContainer) {
-                initialMessageContainer.style.display = 'none';
+            // Listeners do Modal LGPD
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', closeLgpdModal);
             }
-        });
-        
-        // 7. Listener para rolagem suave do botão "Quero uma demonstração" (MANTIDO)
-        document.getElementById('demonstracao-button').addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
+            if (lgpdModal) {
+                lgpdModal.addEventListener('click', (e) => {
+                    if (e.target === lgpdModal) {
+                        closeLgpdModal();
+                    }
+                });
+            }
+
+            // NOVO: TRATAMENTO DE DEEP LINK (URL HASH) NO CARREGAMENTO
+            if (window.location.hash && window.location.hash !== '#') {
+                // Pequeno atraso para garantir que a página renderize e o cabeçalho seja medido corretamente
+                setTimeout(() => {
+                    scrollToSection(window.location.hash);
+                }, 100);
+            }
+
+
+            // NOVO: LISTENER GERAL PARA LINKS INTERNOS (SCROLL SUAVE E ATUALIZAÇÃO DO HASH)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                // Mantém o listener específico para o botão de demonstração fora deste loop
+                if (anchor.id === 'demonstracao-button') return; 
+
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    
+                    // Atualiza o hash da URL para que seja compartilhável
+                    if (window.location.hash !== targetId) {
+                        window.history.pushState(null, null, targetId);
+                    }
+
+                    // Rola para a seção
+                    scrollToSection(targetId);
+                    
+                    // Fecha o menu mobile, se estiver aberto
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+
+            // Listener para o formulário de chat (mantido)
+            chatForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const message = chatInput.value.trim();
+                
+                if (message) {
+                    sendMessage(message);
+                    chatInput.value = ''; // Limpa o input
+                }
+            });
+
+            // Listener para esconder a mensagem inicial ao focar no chat (mantido)
+            chatInput.addEventListener('focus', function() {
+                if (initialMessageContainer) {
+                    initialMessageContainer.style.display = 'none';
+                }
+            });
+            
+            // Listener ATUALIZADO para rolagem suave do botão "Quero uma demonstração"
+            document.getElementById('demonstracao-button').addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                
+                // Atualiza o hash da URL
+                if (window.location.hash !== targetId) {
+                    window.history.pushState(null, null, targetId);
+                }
+
+                // Rola usando a função com offset
+                scrollToSection(targetId);
+
+                // Foca no input do chat após a rolagem
                 setTimeout(() => {
                     chatInput.focus();
                 }, 500); 
+            });
+
+
+            // --- CÓDIGO RESTAURADO (CONTADORES E MENU) ---
+            const statsSection = document.getElementById('stats-section');
+            if (statsSection) {
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            startCounters();
+                            observer.unobserve(entry.target); 
+                        }
+                    });
+                }, { threshold: 0.1 }); 
+                observer.observe(statsSection);
             }
+
+            // Script do menu mobile
+            document.getElementById('mobile-menu-button').addEventListener('click', function() {
+                var menu = document.getElementById('mobile-menu');
+                menu.classList.toggle('hidden');
+            });
         });
 
-
-        // --- CÓDIGO RESTAURADO (CONTADORES E MENU) ---
-
-        // Função para animação do contador
+        // Função para animação do contador (mantida)
         function animateCounter(obj, start, end, duration) {
             let current = start;
             const range = end - start;
@@ -613,27 +906,6 @@ class="whatsapp-bubble fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 r
             const growthCounter = document.getElementById('growth-counter');
             if (growthCounter) animateCounter(growthCounter, 0, parseInt(growthCounter.dataset.target), 1000); 
         }
-
-        // Observer para iniciar a animação
-        const statsSection = document.getElementById('stats-section');
-        if (statsSection) {
-             const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        startCounters();
-                        observer.unobserve(entry.target); 
-                    }
-                });
-            }, { threshold: 0.1 }); 
-            observer.observe(statsSection);
-        }
-
-
-        // Script do menu mobile
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            var menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
     </script>
 </body>
 </html>
