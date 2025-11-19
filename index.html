@@ -23,6 +23,15 @@
         .whatsapp-bubble {
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+        
+        /* NOVO: Correção do "tremor" nos contadores (CLS - Layout Shift) */
+        .counter-stable {
+            font-variant-numeric: tabular-nums; /* Estabiliza a largura dos números */
+            display: inline-block;
+            /* Garante espaço suficiente para o número mais longo (3.385.483) */
+            min-width: 150px; 
+        }
+
         /* Estilo para simular o celular/chat na seção de conteúdo */
         .chat-container {
             width: 100%;
@@ -125,7 +134,8 @@
                 <a href="#solucoes" class="text-gray-600 hover:text-blue-600 transition duration-300">Soluções</a>
                 <a href="#servicos" class="text-gray-600 hover:text-blue-600 transition duration-300">Serviços</a>
                 <a href="#canais" class="text-gray-600 hover:text-blue-600 transition duration-300">Canais</a>
-                <a href="#faq" class="text-gray-600 hover:text-blue-600 transition duration-300">FAQ</a> <a href="#depoimentos" class="text-gray-600 hover:text-blue-600 transition duration-300">Depoimentos</a>
+                <a href="#faq" class="text-gray-600 hover:text-blue-600 transition duration-300">FAQ</a>
+                <a href="#depoimentos" class="text-gray-600 hover:text-blue-600 transition duration-300">Depoimentos</a>
             </div>
             <a href="https://wa.me/5518997411233?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20CRM%20%2B%20IA." class="hidden md:block bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition duration-300">
                 Falar com um consultor
@@ -140,7 +150,8 @@
             <a href="#solucoes" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Soluções</a>
             <a href="#servicos" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Serviços</a>
             <a href="#canais" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Canais</a>
-            <a href="#faq" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">FAQ</a> <a href="#depoimentos" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Depoimentos</a>
+            <a href="#faq" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">FAQ</a>
+            <a href="#depoimentos" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Depoimentos</a>
             <a href="https://wa.me/5518997411233?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20CRM%20%2B%20IA."
 class="block py-3 px-6 text-blue-600 font-medium hover:bg-gray-100">
                 Falar com um consultor
@@ -547,21 +558,21 @@ class="bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-
                 <div class="grid md:grid-cols-3 gap-8">
                     <div class="p-4">
                         <p class="text-6xl font-extrabold text-blue-400 mb-2">
-                            <span id="messages-counter" data-target="3385483">2.000.000</span>+
+                            <span id="messages-counter" data-target="3385483" class="counter-stable">2.000.000</span>+
                         </p>
                         <p class="text-xl font-semibold">Mensagens Transacionadas</p>
                         <p class="text-sm text-gray-300">(E crescendo!) </p>
                     </div>
                     <div class="p-4">
                         <p class="text-6xl font-extrabold text-blue-400 mb-2">
-                            <span id="states-counter" data-target="5">0</span>+
+                            <span id="states-counter" data-target="5" class="counter-stable">0</span>+
                         </p>
                         <p class="text-xl font-semibold">Estados Atendidos</p>
                         <p class="text-sm text-gray-300">Com usuários ativos</p>
                     </div>
                     <div class="p-4">
                         <p class="text-6xl font-extrabold text-blue-400 mb-2">
-                            <span id="growth-counter" data-target="98">0</span>%
+                            <span id="growth-counter" data-target="98" class="counter-stable">0</span>%
                         </p>
                         <p class="text-xl font-semibold">Satisfação do Cliente</p>
                         <p class="text-sm text-gray-300">Baseado em pesquisas internas</p>
@@ -618,7 +629,7 @@ class="whatsapp-bubble fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 r
         // --- VARIÁVEL GLOBAL PARA O PDF ---
         const LGPD_PDF_URL = "https://db.talkincrm.com.br/storage/v1/object/public/banco.arquivos/SITE%20ARQUIVOS/DOC%20LGPD/TalkinCRM_LGPD.pdf";
 
-        // --- FUNÇÃO CENTRAL DE SCROLL COM AJUSTE DE CABEÇALHO (NOVA) ---
+        // --- FUNÇÃO CENTRAL DE SCROLL COM AJUSTE DE CABEÇALHO (MANTIDA) ---
         function scrollToSection(selector) {
             const element = document.querySelector(selector);
             const header = document.querySelector('header');
@@ -755,7 +766,7 @@ class="whatsapp-bubble fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 r
             }
         }
 
-        // --- LISTENERS PRINCIPAIS ---
+        // --- LISTENERS PRINCIPAIS (MANTIDOS E ATUALIZADOS) ---
         document.addEventListener('DOMContentLoaded', () => {
             const closeModalBtn = document.getElementById('close-modal-btn');
             const lgpdModal = document.getElementById('lgpd-modal');
@@ -772,7 +783,7 @@ class="whatsapp-bubble fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 r
                 });
             }
 
-            // NOVO: TRATAMENTO DE DEEP LINK (URL HASH) NO CARREGAMENTO
+            // TRATAMENTO DE DEEP LINK (URL HASH) NO CARREGAMENTO
             if (window.location.hash && window.location.hash !== '#') {
                 // Pequeno atraso para garantir que a página renderize e o cabeçalho seja medido corretamente
                 setTimeout(() => {
@@ -781,7 +792,7 @@ class="whatsapp-bubble fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 r
             }
 
 
-            // NOVO: LISTENER GERAL PARA LINKS INTERNOS (SCROLL SUAVE E ATUALIZAÇÃO DO HASH)
+            // LISTENER GERAL PARA LINKS INTERNOS (SCROLL SUAVE E ATUALIZAÇÃO DO HASH)
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 // Mantém o listener específico para o botão de demonstração fora deste loop
                 if (anchor.id === 'demonstracao-button') return; 
